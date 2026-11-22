@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/call_api_pokemon.dart'; // Nhớ check lại path này
+import 'package:flutter_application_1/api.dart';
 
 class EmilyProfilePage extends StatelessWidget {
   const EmilyProfilePage({super.key});
@@ -15,7 +15,7 @@ class EmilyProfilePage extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.black87),
       ),
       body: FutureBuilder<Map<String, dynamic>>(
-        future: callApiPokemon.getEmilyProfile(),
+        future: getEmilyProfile(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator(color: Colors.blue));
@@ -80,7 +80,7 @@ class EmilyProfilePage extends StatelessWidget {
                       SizedBox(width: 15),
                       Expanded(
                         child: Text(
-                          "Emily là quản lý hệ thống dữ liệu cho Pokedex này.",
+                          "Emily là quản lý hệ thống dữ liệu cho ShopEasy này.",
                           style: TextStyle(color: Colors.white, fontStyle: FontStyle.italic),
                         ),
                       ),

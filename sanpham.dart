@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/giaodienemily.dart';
 
 import 'chitietsp.dart';
 import 'giaodien.dart';
@@ -363,6 +364,22 @@ class _ProductListScreenState extends State<ProductListScreen> {
                       );
                       if (mounted) setState(() {});
                     },
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 12.0, left: 4.0),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const EmilyProfilePage()),
+                        );
+                      },
+                      child: const CircleAvatar(
+                        radius: 16,
+                        backgroundColor: Colors.white,
+                        child: Icon(Icons.person, size: 20, color: Color(0xFF1E3A8A)),
+                      ),
+                    ),
                   ),
                 ],
         ),

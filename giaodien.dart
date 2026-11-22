@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'sanpham.dart';
+import 'package:flutter_application_1/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -100,103 +99,6 @@ class MyApp extends StatelessWidget {
           home: const LoginScreen(),
         );
       },
-    );
-  }
-}
-
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final userCtrl = TextEditingController();
-  final passCtrl = TextEditingController();
-  bool obscurePass = true;
-
-  void handleLogin() {
-    if (userCtrl.text.trim().isEmpty || passCtrl.text.trim().isEmpty) {
-      showMessage(context, 'Vui lòng nhập đầy đủ thông tin');
-      return;
-    }
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (_) => const ProductListScreen()),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24.0),
-          child: Card(
-            elevation: 4,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-            child: Padding(
-              padding: const EdgeInsets.all(28.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 138, 30, 75).withValues(alpha: 0.1),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(Icons.shopping_bag_rounded, size: 60, color: Color.fromARGB(255, 71, 30, 138)),
-                  ),
-                  const SizedBox(height: 16),
-                  const Text(
-                    'ShopEasy',
-                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 138, 30, 95)),
-                  ),
-                  const SizedBox(height: 24),
-                  TextField(
-                    controller: userCtrl,
-                    decoration: InputDecoration(
-                      labelText: tr('username'),
-                      prefixIcon: const Icon(Icons.person_outline),
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  TextField(
-                    controller: passCtrl,
-                    obscureText: obscurePass,
-                    decoration: InputDecoration(
-                      labelText: tr('password'),
-                      prefixIcon: const Icon(Icons.lock_outline),
-                      suffixIcon: IconButton(
-                        icon: Icon(obscurePass ? Icons.visibility_off : Icons.visibility),
-                        onPressed: () => setState(() => obscurePass = !obscurePass),
-                      ),
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 52,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 138, 30, 80),
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                      ),
-                      onPressed: handleLogin,
-                      child: Text(tr('login_btn'), style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
     );
   }
 }
